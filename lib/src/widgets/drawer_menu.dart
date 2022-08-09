@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hnc_admin_dashboard/src/constants/constants.dart';
 import 'package:hnc_admin_dashboard/src/constants/hnc_icons_icons.dart';
+import 'package:hnc_admin_dashboard/src/screens/home.dart';
+import 'package:hnc_admin_dashboard/src/screens/login_screen.dart';
 import 'package:hnc_admin_dashboard/src/widgets/drawer_list_tile.dart';
 
 class DrawerMenu extends StatelessWidget {
@@ -24,7 +26,9 @@ class DrawerMenu extends StatelessWidget {
           DrawerListTile(
               title: "DashBoard",
               iconsData: Icons.dashboard,
-              onPressHandler: () {}),
+              onPressHandler: () {
+                Navigator.of(context).pushReplacementNamed(Home.routeName);
+              }),
           DrawerListTile(
               title: "Branches",
               iconsData: HncIcons.outlet,
@@ -47,7 +51,9 @@ class DrawerMenu extends StatelessWidget {
           DrawerListTile(
             title: "Logout",
             iconsData: Icons.logout,
-            onPressHandler: () {},
+            onPressHandler: () {
+              Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+            },
           ),
         ],
       ),

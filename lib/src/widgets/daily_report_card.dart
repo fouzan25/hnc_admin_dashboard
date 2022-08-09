@@ -22,9 +22,17 @@ class DailyReportCard extends StatelessWidget {
             info.date,
             red.withOpacity(0.8),
           ),
-          textOutput(
+          amountOutput(
             info.totalSum,
-            grey.withOpacity(0.8),
+            indigo,
+          ),
+          amountOutput(
+            info.totalSum,
+            orange.withOpacity(0.8),
+          ),
+          amountOutput(
+            info.totalSum,
+            green.withOpacity(0.8),
           ),
         ],
       ),

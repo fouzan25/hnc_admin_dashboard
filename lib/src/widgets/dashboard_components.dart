@@ -12,44 +12,42 @@ class DashBoardComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const CustomAppBar(),
-            const SizedBox(
-              height: appPadding,
+      child: Column(
+        children: [
+          const CustomAppBar(),
+          const SizedBox(
+            height: appPadding * 3,
+          ),
+          const LatestBranchSalesData(),
+          const SizedBox(
+            height: appPadding * 3,
+          ),
+          if (!Responsive.isMobile(context))
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MonthlyProfit(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                ),
+                DailyProfit(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                )
+              ],
             ),
-            const LatestBranchSalesData(),
-            const SizedBox(
-              height: appPadding,
+          if (Responsive.isMobile(context))
+            MonthlyProfit(
+              width: MediaQuery.of(context).size.width * 1,
             ),
-            if (!Responsive.isMobile(context))
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MonthlyProfit(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                  ),
-                  DailyProfit(
-                    width: MediaQuery.of(context).size.width * 0.4,
-                  )
-                ],
-              ),
-            if (Responsive.isMobile(context))
-              MonthlyProfit(
-                width: MediaQuery.of(context).size.width * 1,
-              ),
-            if (Responsive.isMobile(context))
-              const SizedBox(
-                height: appPadding,
-              ),
-            if (Responsive.isMobile(context))
-              DailyProfit(
-                width: MediaQuery.of(context).size.width * 1,
-              ),
-          ],
-        ),
+          if (Responsive.isMobile(context))
+            const SizedBox(
+              height: appPadding * 3,
+            ),
+          if (Responsive.isMobile(context))
+            DailyProfit(
+              width: MediaQuery.of(context).size.width * 1,
+            ),
+        ],
       ),
     );
   }

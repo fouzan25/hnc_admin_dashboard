@@ -19,15 +19,19 @@ class LtsSalesCard extends StatelessWidget {
         children: [
           textOutput(
             info.branchName,
-            purple.withOpacity(0.8),
+            purple,
           ),
-          textOutput(
+          amountOutput(
             info.totalSales,
-            orange.withOpacity(0.8),
+            indigo,
           ),
-          textOutput(
+          amountOutput(
+            info.totalExpense,
+            orange,
+          ),
+          amountOutput(
             info.netProfit,
-            green.withOpacity(0.8),
+            green,
           ),
         ],
       ),

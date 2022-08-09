@@ -10,26 +10,28 @@ class HeadingContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: 100,
-      decoration: BoxDecoration(
-        color: headingContainerColor.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(appPadding),
-        child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              color: textColor.withOpacity(0.5),
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
+    return Row(
+      children: [
+        Text(
+          title,
+          style: TextStyle(
+            color: textColor.withOpacity(0.8),
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
           ),
         ),
-      ),
+        const SizedBox(
+          width: 5,
+        ),
+        Container(
+          height: 15,
+          width: 15,
+          decoration: BoxDecoration(
+            color: headingContainerColor.withOpacity(0.8),
+            shape: BoxShape.circle,
+          ),
+        ),
+      ],
     );
   }
 }

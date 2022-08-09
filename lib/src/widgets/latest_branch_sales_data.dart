@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hnc_admin_dashboard/src/constants/constants.dart';
 import 'package:hnc_admin_dashboard/src/data/sample_data.dart';
 import 'package:hnc_admin_dashboard/src/widgets/heading_container.dart';
+import 'package:hnc_admin_dashboard/src/widgets/hnc_row_container.dart';
 import 'package:hnc_admin_dashboard/src/widgets/lts_sales_card.dart';
 
 class LatestBranchSalesData extends StatelessWidget {
@@ -10,7 +11,7 @@ class LatestBranchSalesData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
+      height: MediaQuery.of(context).size.height * 0.40,
       width: double.infinity,
       padding: const EdgeInsets.all(appPadding),
       decoration: BoxDecoration(
@@ -21,28 +22,43 @@ class LatestBranchSalesData extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            "Today's Sales",
+            "Today's Report",
             style: TextStyle(
               color: textColor,
               fontSize: 18,
               fontWeight: FontWeight.w800,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(appPadding),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                HeadingContainer(
-                    headingContainerColor: purple, title: "Branch's"),
-                HeadingContainer(headingContainerColor: orange, title: "Sales"),
-                HeadingContainer(headingContainerColor: green, title: "Profits")
-              ],
-            ),
+          const HncRowContainer(
+            childrenList: [
+              HeadingContainer(
+                headingContainerColor: purple,
+                title: "Branch's",
+              ),
+              HeadingContainer(
+                headingContainerColor: indigo,
+                title: "Sales",
+              ),
+              HeadingContainer(
+                headingContainerColor: orange,
+                title: "Expense",
+              ),
+              HeadingContainer(
+                headingContainerColor: green,
+                title: "Profit",
+              ),
+            ],
+          ),
+          const Divider(
+            color: grey,
+            thickness: 1,
+          ),
+          const SizedBox(
+            height: appPadding,
           ),
           Expanded(
             child: ListView.separated(
+              controller: ScrollController(),
               separatorBuilder: ((context, _) => const Divider(
                     color: grey,
                     thickness: 1,

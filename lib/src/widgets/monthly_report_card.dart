@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hnc_admin_dashboard/src/constants/constants.dart';
 import 'package:hnc_admin_dashboard/src/constants/global_functions.dart';
 import 'package:hnc_admin_dashboard/src/model/monthly_report_model.dart';
+import 'package:hnc_admin_dashboard/src/widgets/hnc_row_container.dart';
 
 class MonthlyReportCard extends StatelessWidget {
   final MonthlyReportModel info;
@@ -12,22 +13,25 @@ class MonthlyReportCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(appPadding),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return HncRowContainer(
+        crossAxisValue: CrossAxisAlignment.center,
+        childrenList: [
           textOutput(
             info.month,
-            red.withOpacity(0.8),
+            red,
           ),
-          textOutput(
-            info.sumOfTotalInMonth,
-            grey.withOpacity(0.8),
+          amountOutput(
+            info.sumOfTotalSalesInMonth,
+            indigo,
           ),
-        ],
-      ),
-    );
+          amountOutput(
+            info.sumOfTotalExpenseInMonth,
+            orange,
+          ),
+          amountOutput(
+            info.sumOfTotalProfitInMonth,
+            green,
+          ),
+        ]);
   }
 }

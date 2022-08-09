@@ -7,6 +7,7 @@ import 'package:hnc_admin_dashboard/src/widgets/drawer_menu.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
+  static const routeName = "/home_screen";
   const Home({Key? key}) : super(key: key);
 
   @override
