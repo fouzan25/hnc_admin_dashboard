@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hnc_admin_dashboard/src/constants/constants.dart';
 import 'package:hnc_admin_dashboard/src/constants/responsive.dart';
+import 'package:hnc_admin_dashboard/src/router/ui_page.dart';
 import 'package:hnc_admin_dashboard/src/widgets/%20custom_app_bar.dart';
 import 'package:hnc_admin_dashboard/src/widgets/daily_profit.dart';
 import 'package:hnc_admin_dashboard/src/widgets/latest_branch_sales_data.dart';
@@ -14,7 +15,9 @@ class DashBoardComponents extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          const CustomAppBar(),
+          const CustomAppBar(
+            page: Pages.dashboardPage,
+          ),
           const SizedBox(
             height: appPadding * 3,
           ),

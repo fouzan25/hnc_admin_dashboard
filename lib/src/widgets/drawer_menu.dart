@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hnc_admin_dashboard/src/constants/constants.dart';
 import 'package:hnc_admin_dashboard/src/constants/hnc_icons_icons.dart';
-import 'package:hnc_admin_dashboard/src/screens/home.dart';
-import 'package:hnc_admin_dashboard/src/screens/login_screen.dart';
+import 'package:hnc_admin_dashboard/src/providers/app_state.dart';
+import 'package:hnc_admin_dashboard/src/router/ui_page.dart';
 import 'package:hnc_admin_dashboard/src/widgets/drawer_list_tile.dart';
+import 'package:provider/provider.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final appState = Provider.of<AppState>(context, listen: false);
     return Drawer(
       backgroundColor: primaryColor,
       child: ListView(
@@ -27,16 +29,29 @@ class DrawerMenu extends StatelessWidget {
               title: "DashBoard",
               iconsData: Icons.dashboard,
               onPressHandler: () {
-                Navigator.of(context).pushReplacementNamed(Home.routeName);
+                appState.currentAction = PageAction(
+                  state: PageState.replace,
+                  page: dashboardPageConfig,
+                );
               }),
           DrawerListTile(
               title: "Branches",
               iconsData: HncIcons.outlet,
-              onPressHandler: () {}),
+              onPressHandler: () {
+                appState.currentAction = PageAction(
+                  state: PageState.replace,
+                  page: branchPageConfig,
+                );
+              }),
           DrawerListTile(
               title: "Users",
               iconsData: Icons.verified_user_sharp,
-              onPressHandler: () {}),
+              onPressHandler: () {
+                appState.currentAction = PageAction(
+                  state: PageState.replace,
+                  page: userPageConfig,
+                );
+              }),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: appPadding * 2),
             child: Divider(
@@ -47,12 +62,17 @@ class DrawerMenu extends StatelessWidget {
           DrawerListTile(
               title: "Settings",
               iconsData: HncIcons.app_settings,
-              onPressHandler: () {}),
+              onPressHandler: () {
+                appState.currentAction = PageAction(
+                  state: PageState.replace,
+                  page: settingsPageConfig,
+                );
+              }),
           DrawerListTile(
             title: "Logout",
             iconsData: Icons.logout,
             onPressHandler: () {
-              Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+              appState.logout();
             },
           ),
         ],
